@@ -16,6 +16,21 @@ app.use(express.json());
 //Log Requests with Morgan Middleware
 app.use(morgan("common"));
 
+const __dirname = path.resolve();
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+  );
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running....");
+  });
+}
+
 ///Import Routes
 const postRoutes = require("./Routes/postRoutes.js");
 const contactRoutes = require("./Routes/contactRoutes.js");
