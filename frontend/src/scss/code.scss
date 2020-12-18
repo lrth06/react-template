@@ -1,0 +1,19 @@
+@import "variables";
+.icon {
+  width: 75px;
+  height: 75px;
+  transition: all $transition;
+  margin: 1em;
+}
+#react {
+  animation: spin 8000ms linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
