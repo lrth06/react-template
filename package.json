@@ -10,7 +10,8 @@
     "server": "nodemon server.js",
     "client": "cd frontend && yarn start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "npm run test.js"
+    "test": "npm run test.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "proxy": "http://localhost:5000",
   "dependencies": {
