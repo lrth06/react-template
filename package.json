@@ -1,7 +1,7 @@
 {
   "name": "mern_rest_api_blog",
   "version": "1.0.0",
-  "main": "backend/server.js",
+  "main": "server.js",
   "author": "Toby Hagan",
   "license": "MIT",
   "scripts": {
