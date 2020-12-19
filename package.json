@@ -1,17 +1,17 @@
 {
   "name": "mern_rest_api_blog",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "backend/server.js",
   "author": "Toby Hagan",
   "license": "MIT",
   "scripts": {
     "install-frontend": "cd frontend && yarn install",
-    "start": "node server.js",
-    "server": "nodemon server.js",
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
     "client": "cd frontend && yarn start",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "test": "npm run test.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm install --prefix frontend && npm run build --prefix frontend"
   },
   "proxy": "http://localhost:5000",
   "dependencies": {
