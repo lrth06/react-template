@@ -1,13 +1,13 @@
 {
   "name": "mern_rest_api_blog",
   "version": "1.0.0",
-  "main": "backend/server.js",
+  "main": "server.js",
   "author": "Toby Hagan",
   "license": "MIT",
   "scripts": {
     "install-frontend": "cd frontend && yarn install",
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js",
+    "start": "node server.js",
+    "server": "nodemon server.js",
     "client": "cd frontend && yarn start",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "test": "npm run test.js",
