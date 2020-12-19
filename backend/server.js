@@ -13,17 +13,17 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
 });
 //Handle CORS
-// app.use(cors());
+app.use(cors());
 
 //Manually Handle Cors
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://localhost:3000"); // update to match the domain you will make the request from
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "https://localhost:3000"); // update to match the domain you will make the request from
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
 
 // To parse json data
 app.use(express.json());
@@ -37,9 +37,9 @@ const contactRoutes = require("./Routes/contactRoutes.js");
 const userRoutes = require("./Routes/userRoutes.js");
 
 //Use Imported Routes as Middlewares
-app.use("/api/posts", postRoutes);
-app.use("/api/contact", contactRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/posts", cors(), postRoutes);
+app.use("/api/contact", cors(), contactRoutes);
+app.use("/api/users", cors() userRoutes);
 
 //Testing Endpoint
 app.post("/api/test", (req, res) => {
