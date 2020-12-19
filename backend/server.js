@@ -5,7 +5,7 @@ const port = process.env.PORT || 5000;
 const cors = require("cors");
 const morgan = require("morgan");
 require("dotenv").config();
-const db = require("./backend/Configuration/db");
+const db = require("../Configuration/db");
 const chalk = require("chalk");
 
 app.use("/", express.static(path.join(__dirname, "/frontend/build")));
@@ -22,9 +22,9 @@ app.use(express.json());
 app.use(morgan("common"));
 
 ///Import Routes
-const postRoutes = require("./backend/Routes/postRoutes.js");
-const contactRoutes = require("./backend/Routes/contactRoutes.js");
-const userRoutes = require("./backend/Routes/userRoutes.js");
+const postRoutes = require("../Routes/postRoutes.js");
+const contactRoutes = require("../Routes/contactRoutes.js");
+const userRoutes = require("../Routes/userRoutes.js");
 
 //Use Imported Routes as Middlewares
 app.use("/api/posts", postRoutes);
