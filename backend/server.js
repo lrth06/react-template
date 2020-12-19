@@ -39,7 +39,7 @@ const userRoutes = require("./Routes/userRoutes.js");
 //Use Imported Routes as Middlewares
 app.use("/api/posts", cors(), postRoutes);
 app.use("/api/contact", cors(), contactRoutes);
-app.use("/api/users", cors() userRoutes);
+app.use("/api/users", cors(), userRoutes);
 
 //Testing Endpoint
 app.post("/api/test", (req, res) => {
