@@ -22,9 +22,9 @@ app.use(express.json());
 app.use(morgan("common"));
 
 ///Import Routes
-const postRoutes = require("../Routes/postRoutes.js");
-const contactRoutes = require("../Routes/contactRoutes.js");
-const userRoutes = require("../Routes/userRoutes.js");
+const postRoutes = require("./Routes/postRoutes.js");
+const contactRoutes = require("./Routes/contactRoutes.js");
+const userRoutes = require("./Routes/userRoutes.js");
 
 //Use Imported Routes as Middlewares
 app.use("/api/posts", postRoutes);
