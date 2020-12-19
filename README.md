@@ -163,3 +163,7 @@ This will utilize Nodemailer to send a message to the address you assigned as MA
 | :heavy_check_mark: | POST   | '/'      | Returns Request Body | _Public_       |
 
 - POST ('/test') _Public_ When sent a request, this enpoint will simply return the request's body.
+
+## Frontend
+
+This is the user-facing side of the application. Built with React, there is already a navigation structure in place utilizing react-router, axios for API calls and node-sass for styling. To demonstrate the flexibility of this combination you will notice a number of their benefits exemplified throughout the existing pages and example components.
