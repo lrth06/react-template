@@ -174,9 +174,11 @@ Pages are being completed all the time so if you don't see what you need finishe
 
 ### Pages Completed
 
-| Completed?         | Page Name | URL       |
-| ------------------ | --------- | --------- |
-| :heavy_check_mark: | Home      | '/'       |
-| :heavy_check_mark: | About     | '/About'  |
-| :x: (in progress)  | Blog      | '/blog'   |
-| :x: (in progress)  | Contact   | '/contact |
+| Completed?         | Page Name | URL           |
+| ------------------ | --------- | ------------- |
+| :heavy_check_mark: | Home      | '/'           |
+| :heavy_check_mark: | About     | '/About'      |
+| :x: (in progress)  | Blog      | '/blog'       |
+| :x: (in progress)  | Contact   | '/contact     |
+| :x:                | Admin     | '/admin'      |
+| :x:                | Profile   | '/profile/:id |
