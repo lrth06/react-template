@@ -50,6 +50,10 @@ app.get("/api", (req, res) => {
   res.send("API Home");
 });
 
+// const readme = require("../README.md");
+app.get("/api/readme", (req, res) => {
+  res.sendFile("README.md", { root: __dirname });
+});
 //Handle bad endpoint requests
 //For POST
 app.post("*", (req, res) => {

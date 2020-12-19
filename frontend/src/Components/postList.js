@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "./useAxios";
-
+import axios from "./Functions/useAxios";
+import { PostSkeleton } from "./Functions/loaders";
 export function postList() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,13 +24,19 @@ export function postList() {
     setTimeout(() => {
       getPosts();
       setLoading(false);
-    }, 750);
+    }, 1500);
   }, []);
 
+  if (loading)
+    return (
+      <div>
+        <h1>Posts</h1>
+        <PostSkeleton />
+      </div>
+    );
   return (
     <div>
       <h1>Posts</h1>
-      {loading && <div>Loading...</div>}
       {error && <div>error...</div>}
       {posts.map((i) => (
         <ul>
@@ -41,7 +47,6 @@ export function postList() {
           </li>
         </ul>
       ))}
-      {/* {JSON.stringify(posts)} */}
     </div>
   );
 }

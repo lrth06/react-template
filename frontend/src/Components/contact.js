@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import axios from "./useAxios";
+import axios from "./Functions/useAxios";
 import "../scss/contact.scss";
-import { useForm } from "./useform";
+import { useForm } from "./Functions/useform";
 
 export const Contact = () => {
   const [values, handleChange] = useForm({ email: "", name: "", content: "" });
@@ -20,6 +20,11 @@ export const Contact = () => {
   return (
     <div>
       <>
+        <h1>Contact</h1>
+        <p>
+          This Form uses the useForm.js reusable hook located at
+          '../Components/Functions/useForm.js
+        </p>
         <form className="form" onSubmit={handleSubmit}>
           <input
             name="email"
