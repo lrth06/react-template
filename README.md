@@ -89,7 +89,7 @@ There are also some other tricks under the hood, such as utilizing AWS S3 bucket
 
 This is where the rest API powered by ExpressJS lives, endpoints are active beingly added, the status of which are listed in detail below. All endpoints will be prepended with the following BaseURL ('http://localhost://5000/api/'). Sending a get request to this endpoint will return a text response simply stating that you are at the API Home.
 
-### Endpoints Completed
+### Backend Completion Status
 
 #### User Endpoints ('/users') (<http://localhost:5000/api/users>)
 
@@ -167,3 +167,16 @@ This will utilize Nodemailer to send a message to the address you assigned as MA
 ## Frontend
 
 This is the user-facing side of the application. Built with React, there is already a navigation structure in place utilizing react-router, axios for API calls and node-sass for styling. To demonstrate the flexibility of this combination you will notice a number of their benefits exemplified throughout the existing pages and example components.
+
+### Frontend Completion Status
+
+Pages are being completed all the time so if you don't see what you need finished, be sure to check back or submit a request!
+
+### Pages Completed
+
+| Completed?         | Page Name | URL       |
+| ------------------ | --------- | --------- |
+| :heavy_check_mark: | Home      | '/'       |
+| :heavy_check_mark: | About     | '/About'  |
+| :x: (in progress)  | Blog      | '/blog'   |
+| :x: (in progress)  | Contact   | '/contact |
