@@ -5,13 +5,25 @@ Everything is ready for you, just install the base application and front end, se
 
 > Thanks for taking interest in my project, hope you enjoy and feel free to submit any feedback/requests! -Toby Hagan
 
-## Pre-Requisites
+## Pre-Requisite Accounts
 
 | Requirement           | Paid ?                                       |
 | --------------------- | -------------------------------------------- |
 | MongoDB Atlas Account | Free Tier Available (No CC Required)         |
 | Heroku Account        | Free Tier Available (No CC With Limitations) |
 | Amazon AWS Account    | Free Tier Available (CC Required)            |
+
+## Pre-Requisite Technologies
+
+| Technology | To Download                     |
+| ---------- | ------------------------------- |
+| NPM        | https://nodejs.org/en/download/ |
+
+_*Tip:*_ To install Yarn Package Manager, run:
+
+```
+npm install -g yarn
+```
 
 ## To Install and Run
 
