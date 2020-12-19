@@ -4,7 +4,7 @@ import Code from "./code";
 export function About() {
   return (
     <main>
-      <div>About</div>
+      <h1>About</h1>
       <div>
         <p>This app runs on the following technologies:</p>
         <Code />
