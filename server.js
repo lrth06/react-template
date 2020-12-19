@@ -7,6 +7,7 @@ require("dotenv").config();
 const db = require("./backend/Configuration/db");
 const chalk = require("chalk");
 
+app.use("/", express.static(path.join(__dirname, "/client/build")));
 //Handle CORS
 app.use(cors());
 
