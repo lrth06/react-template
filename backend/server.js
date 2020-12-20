@@ -50,6 +50,9 @@ app.get("/api", (req, res) => {
   res.send("API Home");
 });
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+});
 //Handle bad endpoint requests
 //For POST
 app.post("*", (req, res) => {
@@ -66,10 +69,6 @@ app.get("*", (req, res) => {
     `There was a GET request to  "${url}" which is an invalid endpoint.`
   );
   res.send(`404! "${url}" This is NOT the endpoint you were looking for!`);
-});
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
 });
 //Connect To Database
 db();
