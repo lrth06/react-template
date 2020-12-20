@@ -13,17 +13,20 @@ export function login() {
     axios
       .post("/users/login", values)
       .then((res) => {
-        console.log(res.headers.get("token"));
-        // const user = res.data.user;
-        // localStorage.setItem("user", user);
-        // const token = res.headers.token;
-        // localStorage.setItem("auth-token", token);
+        console.log(res.headers);
+        const user = res.data.user;
+        localStorage.setItem("user", user);
+        const token = res.headers.authorization;
+        localStorage.setItem("auth-token", token);
       })
       .catch((err) => {
         console.error(err);
       });
   };
-
+  function logout() {
+    localStorage.setItem("user", null);
+    localStorage.setItem("auth-token", null);
+  }
   return (
     <main>
       <h2>login</h2>
@@ -44,6 +47,7 @@ export function login() {
 
         <button type="submit">Send</button>
       </form>
+      <button onClick={logout}>logout</button>
     </main>
   );
 }

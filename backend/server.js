@@ -11,13 +11,18 @@ const chalk = require("chalk");
 app.use("/", express.static(path.join(__dirname, "../frontend/build")));
 
 //Handle CORS
-app.use(cors());
 
-//Manually Handle Cors
+const corsOptions = {
+  exposedHeaders: "Authorization",
+};
+
+app.use(cors(corsOptions));
+// // Manually Handle Cors
 // app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "https://localhost:3000"); // update to match the domain you will make the request from
+//   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
 //   res.header(
 //     "Access-Control-Allow-Headers",
+//     "Access-Control-Expose-Headers",
 //     "Origin, X-Requested-With, Content-Type, Accept"
 //   );
 //   next();
