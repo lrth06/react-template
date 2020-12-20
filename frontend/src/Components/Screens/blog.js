@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "../Functions/useAxios";
-import FileUpload from "../Functions/fileUpload";
+import "../../scss/blog.scss";
 export function postList() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -37,14 +37,19 @@ export function postList() {
   return (
     <main>
       <h1>Posts</h1>
-      <FileUpload />
       {error && <div>error...</div>}
       {posts.map((i) => (
-        <ul>
-          <li key={i._id} style={{ padding: "15px" }}>
-            {i.title}
-            <br />
-            {i.subject}
+        <ul className="posts">
+          <li key={i._id}>
+            <div className="post">
+              <img src={i.image} alt="" />
+              <div className="post-text">
+                <h2>{i.title}</h2>
+                <p>{i.subject}</p>
+                <p>{i.comments.length} Comments</p>
+                <button>Read More</button>
+              </div>
+            </div>
           </li>
         </ul>
       ))}

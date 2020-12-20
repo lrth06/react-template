@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Dropzone from "react-dropzone";
 import axios from "./useAxios";
 function FileUpload() {
   const [image, setImage] = useState([]);
@@ -10,7 +9,7 @@ function FileUpload() {
     setImage(e.target.files[0]);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmitImage = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
@@ -24,13 +23,11 @@ function FileUpload() {
       const res = await axios.post("/upload", formData, config);
       if (res) {
         setUploadedImage(res.data);
-        setSuccess(true);
         setLoading(false);
       }
     } catch (err) {
       console.error(err);
       setLoading(false);
-      setError(true);
     }
   };
   useEffect(() => {
@@ -40,7 +37,7 @@ function FileUpload() {
   return (
     <div>
       <h3>Upload File</h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmitImage}>
         <input
           type="file"
           name="file"

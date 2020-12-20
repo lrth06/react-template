@@ -10,6 +10,9 @@ const {
 
 //Register a new User
 router.post("/register", async (req, res) => {
+  const pw = req.body.password;
+  const pw2 = req.body.password2;
+  if (pw !== pw2) return res.status(400).send("Passwords Must Match");
   //Joi Validation
   const { error } = registerValidation(req.body);
   if (error) return res.status(400).send(error.details[0].messaage);
@@ -62,8 +65,9 @@ router.post("/login", async (req, res) => {
   //Compare Password to db
   const valid = await bcrypt.compare(req.body.password, user.password);
   if (!valid) return res.status(400).send("Email or Password Incorrect!");
-  res.header("auth-token", token);
-  res.send({ user: user.name, _id: user._id, isAdmin: user.isAdmin });
+  res
+    .header("token", token)
+    .send({ user: user.name, _id: user._id, isAdmin: user.isAdmin });
 });
 
 module.exports = router;

@@ -1,0 +1,17 @@
+@import "variables";
+.posts {
+  li {
+    list-style: none;
+  }
+}
+.post {
+  display: flex;
+  margin: 1em;
+  img {
+    width: 20%;
+    left: 0;
+  }
+  .post-text {
+    padding: 1em;
+  }
+}
