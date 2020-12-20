@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import axios from "./Functions/useAxios";
-import "../scss/contact.scss";
-import { useForm } from "./Functions/useform";
+import axios from "../Functions/useAxios";
+import "../../scss/contact.scss";
+import { useForm } from "../Functions/useform";
 
 export const Contact = () => {
   const [values, handleChange] = useForm({ email: "", name: "", content: "" });

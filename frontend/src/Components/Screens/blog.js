@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "./Functions/useAxios";
-import { PostSkeleton } from "./Functions/loaders";
+import axios from "../Functions/useAxios";
+import FileUpload from "../Functions/fileUpload";
 export function postList() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -31,16 +31,16 @@ export function postList() {
     return (
       <div>
         <h1>Posts</h1>
-        <PostSkeleton />
       </div>
     );
   return (
     <div>
       <h1>Posts</h1>
+      <FileUpload />
       {error && <div>error...</div>}
       {posts.map((i) => (
         <ul>
-          <li style={{ padding: "15px" }}>
+          <li key={i._id} style={{ padding: "15px" }}>
             {i.title}
             <br />
             {i.subject}

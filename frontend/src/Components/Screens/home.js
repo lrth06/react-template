@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../scss/home.scss";
+import "../../scss/home.scss";
 
 export function Home() {
   return (

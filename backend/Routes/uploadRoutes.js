@@ -1,10 +1,12 @@
-import path from "path";
-import express from "express";
-import multer from "multer";
-import aws from "aws-sdk";
-import multerS3 from "multer-s3";
+const path = require("path");
+const express = require("express");
 const router = express.Router();
-import dotenv from "dotenv";
+const multer = require("multer");
+const multerS3 = require("multer-s3");
+const dotenv = require("dotenv");
+const aws = require("aws-sdk");
+const verify = require("../Middlewares/verifyToken");
+
 dotenv.config();
 
 aws.config.update({
@@ -26,19 +28,21 @@ const s3 = new aws.S3();
 //   },
 // })
 
-function checkFileType(file, cb) {
-  const filetypes = /jpg|jpeg|png/;
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  const mimetype = filetypes.test(file.mimetype);
-
-  if (extname && mimetype) {
-    return cb(null, true);
-  } else {
-    cb("Images only!");
-  }
-}
+// function checkFileType(file, cb) {}
 
 const upload = multer({
+  fileFilter: (req, file, cb) => {
+    if (
+      file.mimetype == "image/png" ||
+      file.mimetype == "image/jpg" ||
+      file.mimetype == "image/jpeg"
+    ) {
+      cb(null, true);
+    } else {
+      cb(null, false);
+      return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
+    }
+  },
   storage: multerS3({
     s3: s3,
     bucket: `${process.env.S3_BUCKET}`,
@@ -68,7 +72,7 @@ const upload = multer({
 
 router.post("/", upload.single("image"), (req, res) => {
   res.send(`${req.file.location}`);
-  console.log(req.file.location);
+  console.log(req.file, req.file.location);
 });
 
-export default router;
+module.exports = router;

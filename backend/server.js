@@ -33,12 +33,12 @@ app.use(morgan("common"));
 const postRoutes = require("./Routes/postRoutes.js");
 const contactRoutes = require("./Routes/contactRoutes.js");
 const userRoutes = require("./Routes/userRoutes.js");
-
+const uploadRoutes = require("./Routes/uploadRoutes");
 //Use Imported Routes as Middlewares
 app.use("/api/posts", postRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/users", userRoutes);
-
+app.use("/api/upload", uploadRoutes);
 //Testing Endpoint
 app.post("/api/test", (req, res) => {
   const body = req.body;
@@ -50,10 +50,6 @@ app.get("/api", (req, res) => {
   res.send("API Home");
 });
 
-// const readme = require("../README.md");
-app.get("/api/readme", (req, res) => {
-  res.sendFile("README.md", { root: __dirname });
-});
 //Handle bad endpoint requests
 //For POST
 app.post("*", (req, res) => {
@@ -71,6 +67,7 @@ app.get("*", (req, res) => {
   );
   res.send(`404! "${url}" This is NOT the endpoint you were looking for!`);
 });
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
 });

@@ -1,6 +1,6 @@
 import React from "react";
-import "../scss/about.scss";
-import Code from "./code";
+import "../../scss/about.scss";
+import Code from "../Components/code";
 export function About() {
   return (
     <main>
