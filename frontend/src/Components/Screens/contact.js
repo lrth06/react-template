@@ -18,7 +18,7 @@ export const Contact = () => {
       });
   };
   return (
-    <div>
+    <main>
       <>
         <h1>Contact</h1>
         <p>
@@ -49,6 +49,6 @@ export const Contact = () => {
           <button type="submit">Send</button>
         </form>
       </>
-    </div>
+    </main>
   );
 };

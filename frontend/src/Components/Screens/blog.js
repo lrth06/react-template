@@ -29,12 +29,13 @@ export function postList() {
 
   if (loading)
     return (
-      <div>
+      <main>
         <h1>Posts</h1>
-      </div>
+        <h3>Loading...</h3>
+      </main>
     );
   return (
-    <div>
+    <main>
       <h1>Posts</h1>
       <FileUpload />
       {error && <div>error...</div>}
@@ -47,6 +48,6 @@ export function postList() {
           </li>
         </ul>
       ))}
-    </div>
+    </main>
   );
 }
