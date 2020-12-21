@@ -124,7 +124,7 @@ This will verify the entered password against the user password in the database 
 | ------------------ | ------ | -------- | -------------------------- | -------------- |
 | :heavy_check_mark: | POST   | '/'      | Create New Post            | _Public_       |
 | :heavy_check_mark: | GET    | '/'      | Get All Posts              | _Public_       |
-| :x:                | GET    | '/:id'   | Get Single Post By ID      | _Protected_    |
+| :heavy_check_mark: | GET    | '/:id'   | Get Single Post By ID      | _Protected_    |
 | :x:                | PUT    | '/:id'   | Modify Single Post By ID   | _Protected_    |
 | :x:                | DELETE | '/:id'   | Delete a Single Post By ID | _Protected_    |
 
@@ -137,6 +137,20 @@ This will verify the entered password against the user password in the database 
        - subject
        - content
        - image (only accepts location string)
+
+- GET ('/') Returns all posts
+
+- GET ('/:id') _Protected_ This endpoint will return a single post which has an ID matching the request's "id" paramater.
+
+#### Upload Endpoints ('/contact/) (<http://localhost:5000/api/upload>)
+
+| Completed ?        | Method | Endpoint | Action                  | Access Control |
+| ------------------ | ------ | -------- | ----------------------- | -------------- |
+| :heavy_check_mark: | POST   | '/'      | Uploads image to AWS S3 | _Protected_    |
+
+##### Endpoint Details
+
+- POST ('/') _Public_ This endpoint takes in a file and filters by mimetype, currently allowed mimetypes are jpg|jpeg|png
 
 #### Contact Endpoints ('/contact/) (<http://localhost:5000/api/contact>)
 
@@ -179,6 +193,7 @@ Pages are being completed all the time so if you don't see what you need finishe
 | :heavy_check_mark: | Home      | '/'           |
 | :heavy_check_mark: | About     | '/About'      |
 | :x: (in progress)  | Blog      | '/blog'       |
+| :x: (in progress)  | Blog      | '/blog/:id'   |
 | :x: (in progress)  | Contact   | '/contact     |
 | :x:                | Admin     | '/admin'      |
 | :x:                | Profile   | '/profile/:id |

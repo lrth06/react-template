@@ -33,4 +33,17 @@ router.get("/", async (req, res) => {
   res.status(200).send(posts);
 });
 
+//Get single post by ID **Public**
+router.get("/:id", async (req, res) => {
+  try {
+    console.log(req.params.id);
+    const post = await Post.findOne({ _id: req.params.id });
+    res.status(200).send(post);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
+
+//Update Single post by ID **Protected**
+
 module.exports = router;
