@@ -9,15 +9,8 @@ import { blogPost } from "./Components/Screens/blogPost";
 import { register } from "./Components/Screens/register";
 import { login } from "./Components/Screens/login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ReactGA from "react-ga";
 
 export default function App() {
-  useEffect(() => {
-    ReactGA.initialize("UA-185809982-1");
-    // To Report Page View
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  }, []);
-
   useEffect(() => {
     console.log(window.location.pathname);
   });
