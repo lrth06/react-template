@@ -1,6 +1,7 @@
 import React from "react";
 import "../../scss/layout.scss";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+
 export function Layout() {
   return (
     <nav>
