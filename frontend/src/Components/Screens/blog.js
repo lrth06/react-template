@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "../Functions/useAxios";
+import { Link } from "react-router-dom";
 import "../../scss/blog.scss";
 export function postList() {
   const [posts, setPosts] = useState([]);
@@ -43,12 +44,18 @@ export function postList() {
           <li key={i._id}>
             <div className="post">
               <img src={i.image} alt="" />
+
               <div className="post-text">
-                <h2>{i.title}</h2>
+                <Link style={{ color: "currentColor" }} to={`/blog/${i._id}`}>
+                  <h2>{i.title}</h2>
+                </Link>
+
                 <p>{i.subject}</p>
                 <p>{i.author}</p>
                 <p>{i.comments.length} Comments</p>
-                <button>Read More</button>
+                <Link style={{ color: "currentColor" }} to={`/blog/${i._id}`}>
+                  <button>Read More</button>
+                </Link>
               </div>
             </div>
           </li>
