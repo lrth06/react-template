@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "../Functions/useform";
 import axios from "../Functions/useAxios";
+import jwt from "jsonwebtoken";
 export function login() {
   const [loading, setLoading] = useState(false);
   const [values, handleChange] = useForm({
@@ -13,9 +14,17 @@ export function login() {
     axios
       .post("/users/login", values)
       .then((res) => {
-        console.log(res.headers);
+        const payload = jwt.decode(res.headers.authorization);
+        console.log(payload);
+        // console.log(res.headers);
         const user = res.data.user;
-        localStorage.setItem("user", user);
+        const item = {
+          value: user,
+          expiry: now.getTime() + ttl,
+        };
+        localStorage.setItem(key, JSON.stringify(item));
+
+        // localStorage.setItem("user", user);
         const token = res.headers.authorization;
         localStorage.setItem("auth-token", token);
       })

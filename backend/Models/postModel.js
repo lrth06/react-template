@@ -20,6 +20,9 @@ const postSchema = mongoose.Schema(
       required: true,
       ref: "User",
     },
+    author: {
+      type: String,
+    },
     title: {
       type: String,
       required: true,

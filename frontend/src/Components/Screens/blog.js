@@ -46,6 +46,7 @@ export function postList() {
               <div className="post-text">
                 <h2>{i.title}</h2>
                 <p>{i.subject}</p>
+                <p>{i.author}</p>
                 <p>{i.comments.length} Comments</p>
                 <button>Read More</button>
               </div>

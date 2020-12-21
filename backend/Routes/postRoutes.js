@@ -5,12 +5,14 @@ const Post = require("../Models/postModel");
 
 //Create New Post **Private**
 router.post("/", verify, async (req, res) => {
+  console.log(req.user);
   const postExists = await Post.findOne({ title: req.body.title });
   if (postExists)
     return res.status(400).send("A Post With This Title Already Exists!");
 
   const post = new Post({
     user: req.user,
+    author: req.user.user,
     title: req.body.title,
     subject: req.body.subject,
     content: req.body.content,
