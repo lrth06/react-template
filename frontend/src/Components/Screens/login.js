@@ -16,15 +16,7 @@ export function login() {
       .then((res) => {
         const payload = jwt.decode(res.headers.authorization);
         console.log(payload);
-        // console.log(res.headers);
-        const user = res.data.user;
-        const item = {
-          value: user,
-          expiry: now.getTime() + ttl,
-        };
-        localStorage.setItem(key, JSON.stringify(item));
-
-        // localStorage.setItem("user", user);
+        localStorage.setItem("user-info", JSON.stringify(payload));
         const token = res.headers.authorization;
         localStorage.setItem("auth-token", token);
       })

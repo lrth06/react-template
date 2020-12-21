@@ -65,9 +65,7 @@ router.post("/login", async (req, res) => {
   //Compare Password to db
   const valid = await bcrypt.compare(req.body.password, user.password);
   if (!valid) return res.status(400).send("Email or Password Incorrect!");
-  res
-    .header("Authorization", token)
-    .send({ user: user.name, _id: user._id, isAdmin: user.isAdmin });
+  res.header("Authorization", token).send(`Logged in as ${req.body.email}`);
 });
 
 module.exports = router;
