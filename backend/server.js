@@ -13,7 +13,7 @@ app.use("/", express.static(path.join(__dirname, "../frontend/build")));
 //Handle CORS
 
 const corsOptions = {
-  origin: `http://localhost:3000`,
+  // origin: `http://localhost:3000`,
   exposedHeaders: "Authorization",
 };
 
