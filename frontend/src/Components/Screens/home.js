@@ -12,6 +12,7 @@ export function Home() {
       >
         GitHub Repository: https://github.com/lrth06/react-template
       </a>
+      {JSON.stringify(process.env)}{" "}
     </main>
   );
 }
