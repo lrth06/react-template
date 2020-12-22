@@ -178,7 +178,7 @@ This will utilize Nodemailer to send a message to the address you assigned as MA
 
 - POST ('/test') _Public_ When sent a request, this enpoint will simply return the request's body.
 
-## Frontend
+## Frontend ![react logo](https://github.com/lrth06/react-template/frontend/src/Components/Icons/react.svg)
 
 This is the user-facing side of the application. Built with React, there is already a navigation structure in place utilizing react-router, axios for API calls and node-sass for styling. To demonstrate the flexibility of this combination you will notice a number of their benefits exemplified throughout the existing pages and example components.
 
@@ -194,6 +194,7 @@ Pages are being completed all the time so if you don't see what you need finishe
 | :heavy_check_mark: | About     | '/About'      |
 | :x: (in progress)  | Blog      | '/blog'       |
 | :x: (in progress)  | Blog      | '/blog/:id'   |
+| :x: (in progress)  | Add Post  | '/blog/:add'  |
 | :x: (in progress)  | Contact   | '/contact     |
 | :x:                | Admin     | '/admin'      |
 | :x:                | Profile   | '/profile/:id |
