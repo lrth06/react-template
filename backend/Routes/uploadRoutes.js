@@ -12,7 +12,7 @@ dotenv.config();
 aws.config.update({
   secretAccessKey: `${process.env.S3_ACCESS}`,
   accessKeyId: `${process.env.S3_KEY_ID}`,
-  region: "us-east-1",
+  region: `${process.env.S3_BUCKET_REGION}`,
 });
 const s3 = new aws.S3();
 

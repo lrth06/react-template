@@ -13,6 +13,7 @@ app.use("/", express.static(path.join(__dirname, "../frontend/build")));
 //Handle CORS
 
 const corsOptions = {
+  origin: `http://localhost:3000`,
   exposedHeaders: "Authorization",
 };
 
@@ -82,7 +83,7 @@ db();
 app.listen(port, () => {
   console.log(
     chalk.underline.black.bgWhite(
-      `Server Listening at http://localhost:${port}`
+      `Server Listening at ${process.env.NPM_PACKAGE_PROXY}`
     )
   );
 });

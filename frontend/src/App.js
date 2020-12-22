@@ -10,7 +10,6 @@ import { register } from "./Components/Screens/register";
 import { login } from "./Components/Screens/login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Analytics from "react-router-ga";
-import axios from "axios";
 
 export default function App() {
   return (
