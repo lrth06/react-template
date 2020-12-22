@@ -16,7 +16,7 @@ export default function App() {
     <div className="App">
       <Router>
         <Layout />
-        <Analytics id={process.env.REACT_APP_ANALYTICS_ID}>
+        <Analytics id="UA-185809982-1">
           <Switch>
             <div>
               <Route path="/" exact component={Home} />
