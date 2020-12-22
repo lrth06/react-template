@@ -5,7 +5,7 @@ function FileUpload() {
   const [uploadedImage, setUploadedImage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChangeImage = (e) => {
     setImage(e.target.files[0]);
   };
 
@@ -41,7 +41,7 @@ function FileUpload() {
         <input
           type="file"
           name="file"
-          onChange={handleChange}
+          onChange={handleChangeImage}
           placeholder="Upload an Image"
         />
         <button value="submit">Submit Image</button>

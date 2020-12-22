@@ -12,21 +12,21 @@ dotenv.config();
 aws.config.update({
   secretAccessKey: `${process.env.S3_ACCESS}`,
   accessKeyId: `${process.env.S3_KEY_ID}`,
-  region: "us-east-2",
+  region: "us-east-1",
 });
 const s3 = new aws.S3();
 
-// const storage = multer.diskStorage({
+// const diskStorage = multer.diskStorage({
 //   destination(req, file, cb) {
-//     cb(null, 'uploads/')
+//     cb(null, "uploads/");
 //   },
 //   filename(req, file, cb) {
 //     cb(
 //       null,
 //       `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
-//     )
+//     );
 //   },
-// })
+// });
 
 // function checkFileType(file, cb) {}
 
@@ -49,12 +49,7 @@ const upload = multer({
     acl: "public-read",
     key: function (req, file, cb) {
       console.log(file);
-      cb(
-        null,
-        `uploads/${file.fieldname}-${Date.now()}${path.extname(
-          file.originalname
-        )}`
-      ); //use Date.now() for unique file keys
+      cb(null, `${Date.now()}-upload${path.extname(file.originalname)}`); //use Date.now() for unique file keys
     },
   }),
 });

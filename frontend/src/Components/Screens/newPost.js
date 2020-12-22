@@ -1,63 +1,87 @@
 import React, { useEffect, useState } from "react";
 import axios from "../Functions/useAxios";
-import FileUpload from "../Functions/fileUpload";
 import { useForm } from "../Functions/useform";
 import "../../scss/blog.scss";
 export function newPost() {
-  const [values, handleChange] = useForm({
-    title: "",
-    subject: "",
-    content: "",
-    image: "",
-  });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const handleSubmit = (e) => {
+  const [image, setImage] = useState([]);
+  const [uploadedImage, setUploadedImage] = useState("");
+
+  const [title, setTitle] = useState("");
+  const [subject, setSubject] = useState("");
+  const [content, setContent] = useState("");
+
+  const handleChangeImage = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    axios
-      .post("/posts", values)
-      .then((res) => {
-        setPosts(res.data);
-        console.log(res.data);
-        setLoading(false);
-      })
-      .catch((e) => {
-        console.error(e);
-        setError(e);
-      });
+    const image = e.target.files[0];
+
+    try {
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      };
+      const formData = new FormData();
+      formData.append("image", image);
+      const res = await axios.post("/upload", formData, config);
+      if (res) {
+        setUploadedImage(res.data);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
-  useEffect(() => {}, []);
+  const handleSubmit = async (e) => {
+    const values = {
+      title: title,
+      subject: subject,
+      content: content,
+      image: uploadedImage,
+    };
+    e.preventDefault();
+    try {
+      const post = await axios.post("/posts", values);
+      if (post) {
+        alert("Success!");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <main>
       <h1>New Post</h1>
+      {uploadedImage && <img style={{ width: "25%" }} src={uploadedImage} />}
       <form className="form" onSubmit={handleSubmit}>
-        <FileUpload />
+        <input
+          type="file"
+          name="file"
+          onChange={handleChangeImage}
+          placeholder="Upload an Image"
+        />
+        <p htmlFor="file">{uploadedImage}</p>
         <input
           name="title"
-          placeholder="Title"
-          value={values.title}
-          onChange={handleChange}
+          placeholder="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <input
           type="text"
           name="subject"
-          placeholder="Subject"
-          value={values.subject}
-          onChange={handleChange}
+          placeholder="subject"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
         />
         <textarea
           type="text"
           name="content"
-          placeholder="Post Body"
-          value={values.content}
-          onChange={handleChange}
+          placeholder="Post Content Here"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         />
-        <input type="hidden" value={values.image} />
         <button type="submit">Send</button>
       </form>
-      <FileUpload />
     </main>
   );
 }

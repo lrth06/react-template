@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Layout } from "./Components/Constants/layout";
 import { Home } from "./Components/Screens/home";
 import { About } from "./Components/Screens/about";
@@ -9,27 +9,28 @@ import { blogPost } from "./Components/Screens/blogPost";
 import { register } from "./Components/Screens/register";
 import { login } from "./Components/Screens/login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Analytics from "react-router-ga";
+import axios from "axios";
 
 export default function App() {
-  useEffect(() => {
-    console.log(window.location.pathname);
-  });
   return (
     <div className="App">
       <Router>
         <Layout />
-        <Switch>
-          <div>
-            <Route path="/" exact component={Home} />
-            <Route path="/register" exact component={register} />
-            <Route path="/login" exact component={login} />
-            <Route path="/about" exact component={About} />
-            <Route path="/contact" exact component={Contact} />
-            <Route path="/blog" exact component={postList} />
-            <Route path="/blog/:id" exact component={blogPost} />
-            <Route path="/blog/add" exact component={newPost} />
-          </div>
-        </Switch>
+        <Analytics id={process.env.REACT_APP_ANALYTICS_ID}>
+          <Switch>
+            <div>
+              <Route path="/" exact component={Home} />
+              <Route path="/register" exact component={register} />
+              <Route path="/login" exact component={login} />
+              <Route path="/about" exact component={About} />
+              <Route path="/contact" exact component={Contact} />
+              <Route path="/blog" exact component={postList} />
+              <Route path="/blog/:id" exact component={blogPost} />
+              <Route path="/blog/add" exact component={newPost} />
+            </div>
+          </Switch>
+        </Analytics>
       </Router>
     </div>
   );

@@ -46,4 +46,30 @@ router.get("/:id", async (req, res) => {
 
 //Update Single post by ID **Protected**
 
+//Add a post comment
+router.post("/:id/comments", verify, async (req, res) => {
+  console.log(req.params.id);
+
+  const post = await Post.findOne({ _id: req.params.id });
+  if (post) {
+    try {
+      console.log(post);
+      const comment = {
+        user: req.user,
+        author: req.user.user,
+        comment: req.body.comment,
+      };
+      post.comments.push(comment);
+      const saved = await post.save();
+      console.log(saved);
+      res.status(200).send(saved);
+    } catch (err) {
+      console.log(err);
+      res.status(400).send(err);
+    }
+  } else {
+    res.status(400).send("No Post exists");
+  }
+});
+
 module.exports = router;
