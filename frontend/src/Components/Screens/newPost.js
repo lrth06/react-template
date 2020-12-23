@@ -22,7 +22,14 @@ export function newPost() {
       };
       const formData = new FormData();
       formData.append("image", image);
-      const res = await axios.post("/upload", formData, config);
+      function endpoint() {
+        if (process.env.NODE_ENV !== "production") {
+          return "/upload/local";
+        } else {
+          return "/upload";
+        }
+      }
+      const res = await axios.post(`${endpoint()}`, formData, config);
       if (res) {
         setUploadedImage(res.data);
       }

@@ -16,17 +16,18 @@ aws.config.update({
 });
 const s3 = new aws.S3();
 
-// const diskStorage = multer.diskStorage({
-//   destination(req, file, cb) {
-//     cb(null, "uploads/");
-//   },
-//   filename(req, file, cb) {
-//     cb(
-//       null,
-//       `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
-//     );
-//   },
-// });
+const diskStorage = multer.diskStorage({
+  destination: "backend/uploads/",
+
+  // By default, multer removes file extensions so let's add them back
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+const localUpload = multer({ storage: diskStorage });
 
 // function checkFileType(file, cb) {}
 
@@ -65,9 +66,22 @@ const upload = multer({
 //     })
 // });
 
-router.post("/", upload.single("image"), (req, res) => {
-  res.send(`${req.file.location}`);
-  console.log(req.file, req.file.location);
+router.post("/", verify, upload.single("image"), (req, res) => {
+  const file = req.file.location;
+  console.log(file);
+
+  res.send(file);
+  console.log(`${req.file.destination}` + `${req.file.filename}`);
+});
+router.post("/local", verify, localUpload.single("image"), (req, res) => {
+  const file =
+    `http://${req.hostname}` +
+    `:${process.env.PORT}/` +
+    `uploads/` +
+    `${req.file.filename}`;
+  console.log(file);
+
+  res.send(file);
 });
 
 module.exports = router;

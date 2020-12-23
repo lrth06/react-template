@@ -24,9 +24,10 @@ export function login() {
         console.error(err);
       });
   };
-  function logout() {
-    localStorage.setItem("user", null);
-    localStorage.setItem("auth-token", null);
+  function logout(e) {
+    e.preventDefault();
+    localStorage.setItem("user", "");
+    localStorage.setItem("auth-token", "");
   }
   return (
     <main>
@@ -48,7 +49,7 @@ export function login() {
 
         <button type="submit">Send</button>
       </form>
-      <button onClick={logout}>logout</button>
+      <button onClick={(e) => logout(e)}>logout</button>
     </main>
   );
 }

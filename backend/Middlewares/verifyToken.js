@@ -9,6 +9,7 @@ module.exports = function verify(req, res, next) {
   try {
     const verified = jwt.verify(token, secret);
     req.user = verified;
+    console.log(verified);
     next();
   } catch (err) {
     res.status(400).send("Invalid Credentials");

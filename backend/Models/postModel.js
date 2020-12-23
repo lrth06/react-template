@@ -35,7 +35,6 @@ const postSchema = mongoose.Schema(
     subject: {
       type: String,
       required: true,
-      unique: true,
     },
     content: {
       type: String,

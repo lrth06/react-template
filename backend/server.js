@@ -10,15 +10,16 @@ const chalk = require("chalk");
 
 app.use("/", express.static(path.join(__dirname, "../frontend/build")));
 
+app.use("/uploads", express.static(path.join(__dirname, "./uploads")));
+
 //Handle CORS
 
 const corsOptions = {
-  // origin: `http://localhost:3000`,
   exposedHeaders: "Authorization",
 };
-
 app.use(cors(corsOptions));
-// // Manually Handle Cors
+
+// Manually Handle Cors
 // app.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
 //   res.header(
@@ -40,11 +41,13 @@ const postRoutes = require("./Routes/postRoutes.js");
 const contactRoutes = require("./Routes/contactRoutes.js");
 const userRoutes = require("./Routes/userRoutes.js");
 const uploadRoutes = require("./Routes/uploadRoutes");
+
 //Use Imported Routes as Middlewares
 app.use("/api/posts", postRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/upload", uploadRoutes);
+
 //Testing Endpoint
 app.post("/api/test", (req, res) => {
   const body = req.body;
@@ -83,7 +86,7 @@ db();
 app.listen(port, () => {
   console.log(
     chalk.underline.black.bgWhite(
-      `Server Listening at ${process.env.NPM_PACKAGE_PROXY}`
+      `Server Listening at http://localhost:${port}`
     )
   );
 });
