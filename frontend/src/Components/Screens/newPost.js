@@ -29,7 +29,7 @@ export function newPost() {
           return "/upload";
         }
       }
-      const res = await axios.post(`${endpoint()}`, formData, config);
+      const res = await axios.post(endpoint(), formData, config);
       if (res) {
         setUploadedImage(res.data);
       }
