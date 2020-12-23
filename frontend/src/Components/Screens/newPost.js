@@ -23,7 +23,7 @@ export function newPost() {
       const formData = new FormData();
       formData.append("image", image);
       const endpoint = () => {
-        if (process.env.REACT_APP_NODE_ENV !== "production") {
+        if (process.env.NODE_ENV !== "production") {
           return "/upload/local";
         } else {
           return "/upload";
