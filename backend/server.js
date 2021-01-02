@@ -34,7 +34,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 //Log Requests with Morgan Middleware
-app.use(morgan("common"));
+app.use(morgan("dev"));
 
 ///Import Routes
 const postRoutes = require("./Routes/postRoutes.js");

@@ -24,7 +24,7 @@ export function newPost() {
       formData.append("image", image);
       const endpoint = () => {
         if (process.env.NODE_ENV !== "production") {
-          return "/upload/local";
+          return "/upload";
         } else {
           return "/upload";
         }

@@ -11,12 +11,15 @@ router.post("/", verify, async (req, res) => {
   const postExists = await Post.findOne({ title: req.body.title });
   if (postExists)
     return res.status(400).send("A Post With This Title Already Exists!");
+  const str = req.body.content;
+  const trim = str.slice(0, 140);
+  const abbr = `${trim}...`;
 
   const post = new Post({
     user: req.user,
     author: req.user.user,
     title: req.body.title,
-    subject: req.body.subject,
+    subject: abbr,
     content: req.body.content,
     image: req.body.image,
     isPublushed: "false",
@@ -74,7 +77,11 @@ router.post("/:id/update", verify, async (req, res) => {
     if (post.author === user.user || user.isAdmin) {
       try {
         post.title = req.body.title;
-        post.subject = req.body.subject;
+        const str = req.body.content;
+        const trim = str.slice(0, 140);
+        const abbr = `${trim}...`;
+
+        post.subject = abbr;
         post.content = req.body.content;
         post.isPublished = req.body.isPublished;
         const updated = await post.save();
