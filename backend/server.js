@@ -10,7 +10,7 @@ const chalk = require("chalk");
 app.enable("trust proxy");
 
 function secure(req, res, next) {
-  if (process.env.NODE_ENV != "development") {
+  if (process.env.NODE_ENV != "development" && !req.secure) {
     return res.redirect("https://" + req.headers.host + req.url);
   }
   next();
