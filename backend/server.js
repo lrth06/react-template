@@ -11,7 +11,7 @@ app.enable("trust proxy");
 
 function secure(req, res, next) {
   if (process.env.NODE_ENV != "development") {
-    return res.redirect("https://" + request.headers.host + request.url);
+    return res.redirect("https://" + req.headers.host + req.url);
   }
   next();
 }
