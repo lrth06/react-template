@@ -7,7 +7,16 @@ const morgan = require("morgan");
 require("dotenv").config();
 const db = require("./Configuration/db");
 const chalk = require("chalk");
+app.enable("trust proxy");
 
+function secure(req, res, next) {
+  if (process.env.NODE_ENV != "development") {
+    return res.redirect("https://" + request.headers.host + request.url);
+  }
+  next();
+}
+
+app.use(secure);
 app.use("/", express.static(path.join(__dirname, "../frontend/build")));
 
 app.use("/uploads", express.static(path.join(__dirname, "./uploads")));
@@ -16,6 +25,7 @@ app.use("/uploads", express.static(path.join(__dirname, "./uploads")));
 
 const corsOptions = {
   exposedHeaders: "Authorization",
+  host: "http://localhost:3000" || "https://localhost:3000",
 };
 app.use(cors(corsOptions));
 
@@ -41,15 +51,7 @@ const postRoutes = require("./Routes/postRoutes.js");
 const contactRoutes = require("./Routes/contactRoutes.js");
 const userRoutes = require("./Routes/userRoutes.js");
 const uploadRoutes = require("./Routes/uploadRoutes");
-app.enable("trust proxy");
-function secure(req, res, next) {
-  if (process.env.NODE_ENV != "development") {
-    return res.redirect("https://" + request.headers.host + request.url);
-  }
-  next();
-}
 
-app.use(secure);
 //Use Imported Routes as Middlewares
 app.use("/api/posts", postRoutes);
 app.use("/api/contact", contactRoutes);
