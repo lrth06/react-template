@@ -41,7 +41,15 @@ const postRoutes = require("./Routes/postRoutes.js");
 const contactRoutes = require("./Routes/contactRoutes.js");
 const userRoutes = require("./Routes/userRoutes.js");
 const uploadRoutes = require("./Routes/uploadRoutes");
+app.enable("trust proxy");
+function secure(req, res, next) {
+  if (process.env.NODE_ENV != "development") {
+    return res.redirect("https://" + request.headers.host + request.url);
+  }
+  next();
+}
 
+app.use(secure);
 //Use Imported Routes as Middlewares
 app.use("/api/posts", postRoutes);
 app.use("/api/contact", contactRoutes);
