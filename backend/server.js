@@ -25,7 +25,7 @@ app.use("/uploads", express.static(path.join(__dirname, "./uploads")));
 
 const corsOptions = {
   exposedHeaders: "Authorization",
-  host: "http://localhost:3000" || "https://localhost:3000",
+  origin: "http://localhost:3000" || "https://localhost:3000",
 };
 app.use(cors(corsOptions));
 
