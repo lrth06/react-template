@@ -1,0 +1,16 @@
+{
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "useTabs": false,
+    "tabWidth": 2,
+    "plugins": [
+        "react",
+        "prettier-plugin-tailwindcss"
+    ],
+    "extends": [
+        "prettier",
+        "prettier/react",
+        "prettier/tailwind"
+    ]
+}
