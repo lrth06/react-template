@@ -7,6 +7,10 @@
     "jsx": "react",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "Node"
-  }
+    "moduleResolution": "Node",
+    "sourceMap": true,
+  },
+    "include": ["./src/**/*"],
+    "typeRoots": ["./src/@types", "./node_modules/@types"],
+
 }

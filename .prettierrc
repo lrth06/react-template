@@ -8,9 +8,5 @@
         "react",
         "prettier-plugin-tailwindcss"
     ],
-    "extends": [
-        "prettier",
-        "prettier/react",
-        "prettier/tailwind"
-    ]
+    "extends": []
 }
