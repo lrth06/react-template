@@ -5,6 +5,18 @@ export default function App() {
   return (
     <div className="h-screen w-screen bg-white text-gray-900 dark:bg-gray-800 dark:text-white">
       <div className="flex h-full flex-col items-center justify-center">
+        <div className="prose prose-slate p-10  dark:prose-invert">
+          <h1>React Template</h1>
+          <p>
+            This is a template for React projects. It includes a basic setup for
+            a React app with TypeScript, Tailwind CSS, and ESLint.
+          </p>
+          {/* tailwind prose code block with mono font */}
+          <h2>
+            Edit <code className="text-blue-400">src/App.tsx</code> and save to
+            get started!
+          </h2>
+        </div>
         <button
           onClick={() => {
             //open new window to github.com/lrth06/react-template
@@ -30,6 +42,11 @@ export default function App() {
             />
           </svg>
         </button>
+        <div className="prose-sm prose-slate p-10  dark:prose-invert">
+          <code>
+            <pre>Open to contributions! </pre>
+          </code>
+        </div>
       </div>
     </div>
   );
